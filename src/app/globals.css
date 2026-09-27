@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------- */
+/* Design tokens — ShilpiKala                                       */
+/* Palette drawn from Mandala symmetry and Lipan terracotta relief. */
+/* ---------------------------------------------------------------- */
+:root {
+  --shilpikala-ivory: #f7f2e8;
+  --shilpikala-terracotta: #a65335;
+  --shilpikala-terracotta-deep: #7d3927;
+  --shilpikala-earth-brown: #4a3027;
+  --shilpikala-gold: #b58a4a;
+  --shilpikala-olive: #4e5638;
+  --shilpikala-charcoal: #24211e;
+
+  --background: var(--shilpikala-ivory);
+  --foreground: var(--shilpikala-charcoal);
+
+  --shilpikala-font-display: Georgia, "Times New Roman", serif;
+  --shilpikala-font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+}
+
+/* Maps our brand variables above onto Tailwind's theme namespace, so
+   classes like bg-terracotta / text-earth-brown / font-display work
+   directly in markup while the real values stay declared once, above. */
+@theme inline {
+  --color-ivory: var(--shilpikala-ivory);
+  --color-terracotta: var(--shilpikala-terracotta);
+  --color-terracotta-deep: var(--shilpikala-terracotta-deep);
+  --color-earth-brown: var(--shilpikala-earth-brown);
+  --color-gold: var(--shilpikala-gold);
+  --color-olive: var(--shilpikala-olive);
+  --color-charcoal: var(--shilpikala-charcoal);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--shilpikala-font-display);
+  --font-body: var(--shilpikala-font-body);
+}
+
+/* ---------------------------------------------------------------- */
+/* Base                                                              */
+/* ---------------------------------------------------------------- */
+* {
+  border-color: color-mix(
+    in srgb,
+    var(--shilpikala-earth-brown) 15%,
+    transparent
+  );
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--shilpikala-terracotta);
+  color: var(--shilpikala-ivory);
+}
+
+/* Visible, on-brand keyboard focus rather than the browser default */
+:focus-visible {
+  outline: 2px solid var(--shilpikala-terracotta);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
