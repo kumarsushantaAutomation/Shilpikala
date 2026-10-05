@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# order data (Day 6 file-based store) — never commit real customer orders.
+# storage/catalog.json (Day 8) is NOT ignored — it's the site's own
+# product/category content and ships committed as the initial seed.
+/storage/orders.jsonl
